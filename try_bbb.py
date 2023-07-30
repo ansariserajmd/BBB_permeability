@@ -10,7 +10,7 @@ from streamlit_option_menu import option_menu
 # Load the model, selected_features, and scaler from the pickle file
 filename = "BBB_model_des_3d.sav"
 with open(filename, 'rb') as f:
-    loaded_model, selected_features, scaler = pickle.load(f)
+    loaded_model, selected_features = pickle.load(f)
 
 # BBB prediction function
 def predict_bbb_permeability(smiles_string):
@@ -37,9 +37,8 @@ def predict_bbb_permeability(smiles_string):
     # Select only the features used during training from 'input_data' based on selected_features
     input_data_selected = descriptors_df[selected_features]
     
-    # Scale the input data using the scaler
-    input_scaled = scaler.transform(input_data_selected)
-    input_scaled_df = pd.DataFrame(input_scaled, columns=selected_features)
+    
+    input_scaled_df = pd.DataFrame(input_data_selected)
     
     # Make BBB permeability prediction using the loaded model
     prediction = loaded_model.predict(input_scaled_df)
