@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from streamlit_option_menu import option_menu
 
 # Load the model, selected_features, and scaler from the pickle file
-filename = "/home/seraj22200/deployment/BBB_model_des_3d.sav"
+filename = "BBB_model_des_3d.sav"
 with open(filename, 'rb') as f:
     loaded_model, selected_features, scaler = pickle.load(f)
 
