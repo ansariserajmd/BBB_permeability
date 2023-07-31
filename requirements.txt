@@ -1,4 +1,4 @@
-asttokens==2.0.55
+asttokens==2.0.5
 streamlit_option_menu==0.3.6
 pandas==1.5.3
 numpy==1.25.0
