@@ -59,6 +59,14 @@ def calculate_descriptors(smiles):
         # Create a DataFrame with descriptors and valid SMILES
         df_des = pd.concat([descriptors_df, pd.Series(valid_molecules, name='Isomeric SMILES')], axis=1)
 
+        for column in df_des.columns:
+            if df_des[column].dtype == object:
+                df_des[column] = pd.to_numeric(df_des[column], errors='coerce').fillna(0)
+            elif pd.api.types.is_numeric_dtype(df_des[column]):
+                df_des[column] = pd.to_numeric(df_des[column], errors='coerce').fillna(0)
+            else:
+                df_des[column] = 0.0
+
         # Drop the 'Isomeric SMILES' column
         df_des_only = df_des.drop("Isomeric SMILES", axis=1)
 
