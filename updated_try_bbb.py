@@ -78,11 +78,10 @@ def calculate_descriptors(smiles):
 def main():
     # Set the title and description of the app
     st.title("BBB Permeability Prediction Using AI")
-    st.write("Predict the BBB Permeability using a Machine Learning and molecular descriptors.")
 
     # Add a side option menu with additional information if needed
-    st.sidebar.title("Options")
-    st.sidebar.write("You can enter a SMILES of a molecule to predict its BBB Permeability.")
+    st.sidebar.title("Menu")
+    st.sidebar.write("BBB Permeability.")
 
     # User input for SMILES
     smiles_input = st.text_input("Enter the SMILES :")
@@ -100,9 +99,9 @@ def main():
 
             # Display the prediction result
             if prediction == 0:
-                st.write("BBB Permeability Prediction: Negative")
+                st.write("Our assessment concludes that the molecule's BBB Permeability is negative")
             else:
-                st.write("BBB Permeability Prediction: Positive")
+                st.write("Our assessment concludes that the molecule's BBB Permeability is positive")
         else:
             st.write("Invalid SMILES input. Please enter a valid SMILES string.")
     else:
